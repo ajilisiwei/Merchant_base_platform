@@ -1,0 +1,25 @@
+{
+  "name": "Merchant_base_platform",
+  "description": "merchant_platform",
+  "main": "",
+  "authors": [
+    "ajilisiwei"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "merchant"
+  ],
+  "homepage": "https://github.com/ajilisiwei/Merchant_base_platform",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

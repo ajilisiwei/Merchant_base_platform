@@ -10,15 +10,17 @@ block content
                     .panel-heading
                         h3.panel-title Please Sign In
                     .panel-body
-                        form(role='form')
+                        form(role='form' method='post' action='/user/sign_in')
                             fieldset
                                 .form-group
                                     input.form-control(placeholder='E-mail',name='email',type='email',autofocus=true)
                                 .form-group
                                     input.form-control(placeholder='Password',name='password',type='password',value='')
-                                .checkbox
-                                    label
-                                        input(name='remember',type='checkbox',value='Remember Me')
-                                        span Remember Me
-                                a.btn.btn-lg.btn-success.btn-block Login
+                                div
+                                    .checkbox
+                                        label
+                                            input(name='remember',type='checkbox',value='Remember Me')
+                                            span Remember Me
+                                    a(href='/user/register') Sign Up
+                                button.btn.btn-lg.btn-success.btn-block(type='submit') Login
 

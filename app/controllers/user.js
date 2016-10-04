@@ -1,6 +1,6 @@
 /* GET users listing. */
-var usermodel=require('../modules/userModel');
-var user=new usermodel({
+var Usermodel=require('../modules/userModel');
+var user=new Usermodel({
     name:'ajilisiwei',
     password:'wei',
 });
@@ -11,26 +11,27 @@ exports.user=function (req,res) {
 
 //login view
 exports.login=function (req,res) {
-    console.log(user);
     res.render('./user/login');
 };
 
 //sign in
-exports.sing_in=function (req,res) {
-    var username=req.body.email;
+exports.sign_in=function (req,res) {
+    var username=req.body.username;
     var password=req.body.password;
     if (username==='wei@126.com' && password==='wei'){
-        res.redirect('/');
+        // res.redirect('/');
+        res.send(JSON.stringify({msg:'true'}));
     }
     else
-        res.redirect('/user/login');
+        res.send(JSON.stringify({msg:'error'}));
 };
 
-//sing_up
+//register
 exports.register=function (req,res) {
     res.render('./user/register');
 };
 
-exports.sing_up=function (req,res) {
-
+exports.sign_up=function (req,res) {
+    console.log(req.body);
+    res.send(JSON.stringify({msg:'true'}));
 };

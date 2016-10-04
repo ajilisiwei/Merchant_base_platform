@@ -9,6 +9,11 @@ html(lang='en')
           script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
           script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     body
+        .alert.alert-success#successedAlert(hidden=true)
+            a.close(href='#', data-dismiss='alert')
+                | ×
+            strong
+            | 欢迎登录第五维度商家管理系统！
         #wrapper
             // Navigation
             nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
@@ -297,5 +302,6 @@ html(lang='en')
             // /#page-wrapper
         // /#wrapper
         // jQuery
+        script(src='/javascripts/main.js')
         include includes/footer
 

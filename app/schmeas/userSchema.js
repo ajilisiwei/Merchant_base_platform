@@ -1,8 +1,8 @@
 var mongoose=require('mongoose');
 var bcrypt=require('bcrypt-nodejs');
-var schema=mongoose.Schema;
+var Schema=mongoose.Schema;
 const SALT_WORK_FACTOR=10;
-var userSchema=new schema({
+var userSchema=new Schema({
     name:String,
     password:String,
     username:String,

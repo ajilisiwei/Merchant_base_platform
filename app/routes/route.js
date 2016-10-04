@@ -12,9 +12,11 @@ module.exports=function (app) {
     //login
     app.get('/user/login',user.login);
     //register
-    app.get('/user/register',user.register)
+    app.get('/user/register',user.register);
     //Sign in
-    app.post('/user/sign_in',user.sing_in);
+    app.post('/user/sign_in',user.sign_in);
+    //Sign up
+    app.post('/user/sign_up',user.sign_up);
     //no found
     app.use(exception.nofound);
 

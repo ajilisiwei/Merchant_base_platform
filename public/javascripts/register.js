@@ -6,10 +6,10 @@
 
 $(function () {
     $('#reset').click(function () {
-        $('#userEmail').empty();
-        $('#userName').empty();
-        $('#password').empty();
-        $('#passwordconfirm').empty();
+        $('#userEmail').val('');
+        $('#userName').val('');
+        $('#password').val('');
+        $('#passwordConfirm').val('');
     });
 
     $('#register').click(function () {
@@ -25,24 +25,38 @@ $(function () {
             alert('用户名不能为空！');
             return;
         }
+        if (!password || !password){
+            alert('密码不能为空！');
+            return;
+        }
         if (password!==passwordConfirm){
-            alert('Password Error!');
+            alert('两次输入的密码不一致!');
             return;
         }
         else {
+            var user={
+                    username:$('#userName').val(),
+                    useremail:$('#userEmail').val(),
+                    password:$('#password').val(),
+            };
             $.ajax({
                 type:'post',
                 url:'/user/sign_up',
-                data:{username:$('#userName').val(),
-                    useremail:$('#userEmail').val(),
-                    password:$('#password').val(),
-                    passwordconfirm:$('#passwordConfirm').val()},
+                data:{user:JSON.stringify(user)},
                 cache:false,
                 dataType:'json',
                 timeout:500,
                 success:function (data) {
-                    if (data.msg=='true'){
+                    if (data.userNameExist='true'){
+                        $('#warnAlert').modal({keyboard:true});
+                        return;
+                    }
+                    if (data.success=='true'){
                         $('#successAlert').modal({keyboard:true});
+                        return;
+                    }
+                    else {
+                        alert('注册失败');
                     }
                 }
             });
@@ -50,6 +64,10 @@ $(function () {
     });
 
     $('#goLogin').click(function () {
+        location.href='/user/login?userName='+$('#userName').val();
+    });
+
+    $('#goLoginForWarn').click(function () {
         location.href='/user/login?userName='+$('#userName').val();
     });
 });

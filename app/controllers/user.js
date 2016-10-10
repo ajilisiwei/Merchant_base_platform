@@ -1,10 +1,5 @@
 /* GET users listing. */
-var Usermodel=require('../modules/userModel');
-var user=new Usermodel({
-    name:'ajilisiwei',
-    password:'wei',
-});
-
+var userBll=require('../bll/userBll');
 exports.user=function (req,res) {
     res.send('respond with a resource');
 };
@@ -32,6 +27,11 @@ exports.register=function (req,res) {
 };
 
 exports.sign_up=function (req,res) {
-    console.log(req.body);
-    res.send(JSON.stringify({msg:'true'}));
+    console.log(req.body.user);
+    var _user=JSON.parse(req.body.user);
+    userBll.register(_user,(result)=>{
+        if(result.userNameExist) res.send(JSON.stringify({userNameExist:'true'}));
+        else if (result.success) res.send(JSON.stringify({success:'true'}));
+        else res.send(JSON.stringify({error:'true'}));
+    });
 };

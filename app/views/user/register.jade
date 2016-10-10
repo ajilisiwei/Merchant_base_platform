@@ -13,13 +13,13 @@ block content
                         form
                             fieldset
                                 .form-group
-                                    input#userEmail.form-control(placeholder='邮箱' name='email' type='email' autofocus=true)
+                                    input#userEmail.form-control(placeholder='邮箱' name='user[email]' type='email' autofocus=true)
                                 .form-group
-                                    input#userName.form-control(placeholder='用户名' name='username' type='type')
+                                    input#userName.form-control(placeholder='用户名' name='user[username]' type='type')
                                 .form-group
-                                    input#password.form-control(placeholder='密码' type='password')
+                                    input#password.form-control(placeholder='密码' name='user[password]' type='password')
                                 .form-group
-                                    input#passwordConfirm.form-control(placeholder='密码确认' type='password')
+                                    input#passwordConfirm.form-control(placeholder='密码确认' name='user[passwordconfirm]' type='password')
                                 div
                                     button.btn.btn-lg.btn-success.btn-block#register(type='button') 提交
                                     button.btn.btn-lg.btn-warm.btn-block#reset(type='button') 重置
@@ -33,4 +33,14 @@ block content
                     | 注册成功！
                 .modal-footer
                     button.btn.btn-success#goLogin(type='button')  去登录
+    #warnAlert.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='false', style='display: none;')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title 提示
+                .modal-body
+                    | 该用户名已存在!
+                .modal-footer
+                    button.btn.btn-danger#goLoginForWarn(type='button')  去登录
     script(src='/javascripts/register.js')
